@@ -1,0 +1,29 @@
+services:
+  database:
+    container_name: flexi_pg
+    image: postgres:alpine
+    ports:
+      - ${PG_PORT}:${PG_PORT}
+    environment:
+      - POSTGRES_USER=${PG_USER}
+      - POSTGRES_PASSWORD=${PG_PASS}
+      - POSTGRES_DB=${PG_DB}
+    volumes:
+      - ./db:/var/lib/postgresql/database
+    networks:
+      - app-tier
+
+  pg_admin:
+    container_name: flexi_pg_admin
+    image: dpage/pgadmin4:latest
+    ports:
+      - 15432:80
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PG_PASS}
+    networks:
+      - app-tier
+
+networks:
+  app-tier:
+    driver: bridge
