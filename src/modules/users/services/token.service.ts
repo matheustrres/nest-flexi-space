@@ -3,7 +3,8 @@ import { sign, verify } from '@node-rs/jsonwebtoken';
 
 import { type JwtPayload } from '@/@core/types';
 
-import { type EnvService } from '@/shared/modules/env/env.service';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { EnvService } from '@/shared/modules/env/env.service';
 
 @Injectable()
 export class TokenService {
