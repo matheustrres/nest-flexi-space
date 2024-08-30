@@ -5,13 +5,15 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 import { HealthModule } from '@/modules/health/health.module';
+import { UsersModule } from '@/modules/users/users.module';
 
 import { GlobalExceptionFilter } from '@/shared/lib/exceptions/filters/global-exception-filter';
 import { ZodExceptionFilter } from '@/shared/lib/exceptions/filters/zod-exception-filter';
 import { EnvModule } from '@/shared/modules/env/env.module';
+import { PrismaModule } from '@/shared/modules/prisma/prisma.module';
 
 @Module({
-	imports: [EnvModule, HealthModule],
+	imports: [EnvModule, HealthModule, PrismaModule, UsersModule],
 	controllers: [AppController],
 	providers: [
 		AppService,
