@@ -37,7 +37,7 @@ export class LoginUserUseCase
 
 		const isValidPassword = await this.hashingService.compareStrings({
 			plainStr: input.password,
-			hashedString: user.render().password,
+			hashedStr: user.render().password,
 		});
 
 		if (!isValidPassword) throw new InvalidCredentialsException();

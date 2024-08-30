@@ -1,7 +1,7 @@
 import { hash, genSalt, compare } from '@node-rs/bcrypt';
 
 type CompareStringsOptions = {
-	hashedString: string;
+	hashedStr: string;
 	plainStr: string;
 };
 
@@ -12,9 +12,9 @@ export class HashingService {
 	}
 
 	async compareStrings({
-		hashedString,
+		hashedStr,
 		plainStr,
 	}: CompareStringsOptions): Promise<boolean> {
-		return compare(plainStr, hashedString);
+		return compare(plainStr, hashedStr);
 	}
 }
