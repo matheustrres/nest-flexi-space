@@ -29,6 +29,9 @@ importers:
       '@node-rs/bcrypt':
         specifier: ^1.10.4
         version: 1.10.4
+      '@node-rs/jsonwebtoken':
+        specifier: ^0.5.6
+        version: 0.5.6
       '@prisma/client':
         specifier: ^5.19.0
         version: 5.19.0(prisma@5.19.0)
@@ -729,6 +732,93 @@ packages:
 
   '@node-rs/bcrypt@1.10.4':
     resolution: {integrity: sha512-Kzs8HKt2eBeT5VnkeKgiz/QKTjOO3URcvSNEQZahNwZnL6dBeeJQTxxYisc/6969+5n6c3+gNwKvqJsZzmGe7g==}
+    engines: {node: '>= 10'}
+
+  '@node-rs/jsonwebtoken-android-arm-eabi@0.5.6':
+    resolution: {integrity: sha512-oWOBuEiloffIziQ+9o6W6dvJNYWtcz9lfs1XbD50Ppb+oCsIkGKZcewPIr4kd2jFc0pnRJP7z31H4os5Xiv9+Q==}
+    engines: {node: '>= 10'}
+    cpu: [arm]
+    os: [android]
+
+  '@node-rs/jsonwebtoken-android-arm64@0.5.6':
+    resolution: {integrity: sha512-VMRFuRUdHZY9qNXomV9nqO/QzlvOOpMZbb7Dpr7yd+a6Ke5nIUbR6b9t1pOkO2rwCE1PzVWTmB+10hUKAma2kQ==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [android]
+
+  '@node-rs/jsonwebtoken-darwin-arm64@0.5.6':
+    resolution: {integrity: sha512-fNdfdn4UTLpqoUSEZ0dD96D+R6q50AOW+nj8p3becG9Fzhbd6tW2lvucUtvhn8SpAUY7pYQVq6KRfSw3cxkC2g==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@node-rs/jsonwebtoken-darwin-x64@0.5.6':
+    resolution: {integrity: sha512-lsDag6KdC9o0tBfYnsJpgSvst/UHoXge22YwENUjI2SzqWWDy4g/GE/SAn+qBM4smoDGYrUSvMvlh4Fe3cOYYQ==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [darwin]
+
+  '@node-rs/jsonwebtoken-freebsd-x64@0.5.6':
+    resolution: {integrity: sha512-Q0Q6SNwZBcOWAdJubZa9Tfs0d6pakJmsSoEkrghcvxedL3a9mcD4ZrdQ+u1XnjUBGLLYsG+jc3MwcGkCJijesA==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [freebsd]
+
+  '@node-rs/jsonwebtoken-linux-arm-gnueabihf@0.5.6':
+    resolution: {integrity: sha512-BqTcYMFzW8igMHqwNhnkvAbs3hIebRm2cWYUI1A55Mzl2UdupvOJBoey0VwiSjKgc12fWdL3qFiH1DKI3JMR6Q==}
+    engines: {node: '>= 10'}
+    cpu: [arm]
+    os: [linux]
+
+  '@node-rs/jsonwebtoken-linux-arm64-gnu@0.5.6':
+    resolution: {integrity: sha512-v01TJEiI7oYPcqKd/AZjLTUQBiVO54BwYGKThT3GbQWQiVUBDeKzMNdyKkpx52Dcf2LT+Of4ObTnzxDB7Epzvw==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@node-rs/jsonwebtoken-linux-arm64-musl@0.5.6':
+    resolution: {integrity: sha512-VQhDTMWMnq171ROfxCeofLYq1aNiVfIBXqhqlL16bmxREyZNQ7ZUVGTyhUcWdOseKs0qxISkGVoBN2695ZXP9g==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@node-rs/jsonwebtoken-linux-x64-gnu@0.5.6':
+    resolution: {integrity: sha512-p6vf8LC0q5gMJSYKi8KKLaFPKaG18UejDWeGc6A400qdPxtUcj4SCTsro4mAmq5cgTFqM763Pak4NWB6sooX7Q==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+
+  '@node-rs/jsonwebtoken-linux-x64-musl@0.5.6':
+    resolution: {integrity: sha512-77ejfC4+IVlY0gvEJQURdRZ/sdKrVfgQsoAvShx1AqS2RXk7gHuOfKVsRcq/QRpxkzev5JtWncTogmZ2ByHYrw==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+
+  '@node-rs/jsonwebtoken-wasm32-wasi@0.5.6':
+    resolution: {integrity: sha512-YwlnOVAp44d1DlhAvIolU9ijZ9h77ZWDX+3TYMLtzrgA0Od2X695AK03AU3uGvO0ckNCwZlH+I3WzDJnDbZtdQ==}
+    engines: {node: '>=14.0.0'}
+    cpu: [wasm32]
+
+  '@node-rs/jsonwebtoken-win32-arm64-msvc@0.5.6':
+    resolution: {integrity: sha512-muYokT/VSx2Frf0PRHXqeKvCwthz1GN8qdWt9TA4JQkQH65PJrikrEpmYucqxP9UWw5a6CO2Wtd+0YRnxi0bOA==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [win32]
+
+  '@node-rs/jsonwebtoken-win32-ia32-msvc@0.5.6':
+    resolution: {integrity: sha512-wzKMFIfDPzQ3pwuW43w+cUjWiuq45AjX84+1FZxDV9d8LS6h+Z46ZeA21d939V21MPvKpOnVly6od7yBSCfYJg==}
+    engines: {node: '>= 10'}
+    cpu: [ia32]
+    os: [win32]
+
+  '@node-rs/jsonwebtoken-win32-x64-msvc@0.5.6':
+    resolution: {integrity: sha512-wjvzAFqx0BkjyJOd56TAPYy7Bbcw+bxwUo/kRGwFJDDRtV5/PLWeK82kktRUU1qrHVmUhKK78uyIbDkJ5eCjBA==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [win32]
+
+  '@node-rs/jsonwebtoken@0.5.6':
+    resolution: {integrity: sha512-6w9mRfjiqo0eUMgtqOCypSIp+Q4PCN7OhMga4MIqinmX6JC2bnc2qldwM29bYlNeYe0nFvc072QmBvsHKiFGZg==}
     engines: {node: '>= 10'}
 
   '@nodelib/fs.scandir@2.1.5':
@@ -4277,6 +4367,67 @@ snapshots:
       '@node-rs/bcrypt-win32-arm64-msvc': 1.10.4
       '@node-rs/bcrypt-win32-ia32-msvc': 1.10.4
       '@node-rs/bcrypt-win32-x64-msvc': 1.10.4
+
+  '@node-rs/jsonwebtoken-android-arm-eabi@0.5.6':
+    optional: true
+
+  '@node-rs/jsonwebtoken-android-arm64@0.5.6':
+    optional: true
+
+  '@node-rs/jsonwebtoken-darwin-arm64@0.5.6':
+    optional: true
+
+  '@node-rs/jsonwebtoken-darwin-x64@0.5.6':
+    optional: true
+
+  '@node-rs/jsonwebtoken-freebsd-x64@0.5.6':
+    optional: true
+
+  '@node-rs/jsonwebtoken-linux-arm-gnueabihf@0.5.6':
+    optional: true
+
+  '@node-rs/jsonwebtoken-linux-arm64-gnu@0.5.6':
+    optional: true
+
+  '@node-rs/jsonwebtoken-linux-arm64-musl@0.5.6':
+    optional: true
+
+  '@node-rs/jsonwebtoken-linux-x64-gnu@0.5.6':
+    optional: true
+
+  '@node-rs/jsonwebtoken-linux-x64-musl@0.5.6':
+    optional: true
+
+  '@node-rs/jsonwebtoken-wasm32-wasi@0.5.6':
+    dependencies:
+      '@napi-rs/wasm-runtime': 0.2.4
+    optional: true
+
+  '@node-rs/jsonwebtoken-win32-arm64-msvc@0.5.6':
+    optional: true
+
+  '@node-rs/jsonwebtoken-win32-ia32-msvc@0.5.6':
+    optional: true
+
+  '@node-rs/jsonwebtoken-win32-x64-msvc@0.5.6':
+    optional: true
+
+  '@node-rs/jsonwebtoken@0.5.6':
+    optionalDependencies:
+      '@node-rs/jsonwebtoken-android-arm-eabi': 0.5.6
+      '@node-rs/jsonwebtoken-android-arm64': 0.5.6
+      '@node-rs/jsonwebtoken-darwin-arm64': 0.5.6
+      '@node-rs/jsonwebtoken-darwin-x64': 0.5.6
+      '@node-rs/jsonwebtoken-freebsd-x64': 0.5.6
+      '@node-rs/jsonwebtoken-linux-arm-gnueabihf': 0.5.6
+      '@node-rs/jsonwebtoken-linux-arm64-gnu': 0.5.6
+      '@node-rs/jsonwebtoken-linux-arm64-musl': 0.5.6
+      '@node-rs/jsonwebtoken-linux-x64-gnu': 0.5.6
+      '@node-rs/jsonwebtoken-linux-x64-musl': 0.5.6
+      '@node-rs/jsonwebtoken-wasm32-wasi': 0.5.6
+      '@node-rs/jsonwebtoken-win32-arm64-msvc': 0.5.6
+      '@node-rs/jsonwebtoken-win32-ia32-msvc': 0.5.6
+      '@node-rs/jsonwebtoken-win32-x64-msvc': 0.5.6
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
