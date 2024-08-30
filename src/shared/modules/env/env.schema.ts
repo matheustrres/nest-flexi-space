@@ -11,7 +11,7 @@ export const envSchema = z.object({
 	PG_PORT: z.coerce.number().optional().default(5432),
 	PG_HOST: z.string().optional().default('localhost'),
 	PGADMIN_DEFAULT_EMAIL: z.string(),
-	DATABASE_URI: z.string().startsWith('postgresql://'),
+	DATABASE_URL: z.string().startsWith('postgresql://'),
 	JWT_PRIVATE_KEY: z.string(),
 	JWT_PUBLIC_KEY: z.string(),
 });
