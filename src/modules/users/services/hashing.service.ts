@@ -1,4 +1,6 @@
-import { hash, genSalt, compare } from '@node-rs/bcrypt';
+import { randomBytes } from 'node:crypto';
+
+import { hash, compare } from '@node-rs/bcrypt';
 
 type CompareStringsOptions = {
 	hashedStr: string;
@@ -7,8 +9,8 @@ type CompareStringsOptions = {
 
 export class HashingService {
 	async hashString(str: string) {
-		const salt = await genSalt(9);
-		return hash(str, null, Buffer.from(salt));
+		const salt = randomBytes(16);
+		return hash(str, null, salt);
 	}
 
 	async compareStrings({
