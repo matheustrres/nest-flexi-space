@@ -1,6 +1,7 @@
 import { Test } from '@nestjs/testing';
 
 import { LoginUserUseCaseBuilder } from '../_data_/builders/use-cases/login-user.builder';
+import { UserBuilder } from '../_data_/builders/user.builder';
 
 import { UsersRepository } from '@/modules/users/repositories/users.repository';
 import { HashingService } from '@/modules/users/services/hashing.service';
@@ -61,5 +62,27 @@ describe(LoginUserUseCase.name, (): void => {
 
 		await expect(promise).rejects.toThrow(new InvalidCredentialsException());
 		expect(usersRepository.findByEmail).toHaveBeenNthCalledWith(1, input.email);
+	});
+
+	it('should throw if given password does not match user password', async (): Promise<void> => {
+		const mockedUser = new UserBuilder().build();
+
+		jest
+			.spyOn(usersRepository, 'findByEmail')
+			.mockResolvedValueOnce(mockedUser);
+		jest.spyOn(hashingService, 'compareStrings').mockResolvedValueOnce(false);
+
+		const input = new LoginUserUseCaseBuilder().withEmail(
+			mockedUser.render().email,
+		).props;
+
+		const promise = sut.exec(input);
+
+		await expect(promise).rejects.toThrow(new InvalidCredentialsException());
+		expect(usersRepository.findByEmail).toHaveBeenNthCalledWith(1, input.email);
+		expect(hashingService.compareStrings).toHaveBeenNthCalledWith(1, {
+			plainStr: input.password,
+			hashedStr: mockedUser.render().password,
+		});
 	});
 });
