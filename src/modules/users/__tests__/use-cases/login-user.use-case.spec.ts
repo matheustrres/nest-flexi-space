@@ -85,4 +85,26 @@ describe(LoginUserUseCase.name, (): void => {
 			hashedStr: mockedUser.render().password,
 		});
 	});
+
+	it('should authenticate a user', async (): Promise<void> => {
+		const mockedUser = new UserBuilder().build();
+		const mockedAccessToken = 'super_secret_access_token';
+
+		jest
+			.spyOn(usersRepository, 'findByEmail')
+			.mockResolvedValueOnce(mockedUser);
+		jest.spyOn(hashingService, 'compareStrings').mockResolvedValueOnce(true);
+		jest
+			.spyOn(tokenService, 'signToken')
+			.mockResolvedValueOnce(mockedAccessToken);
+
+		const input = new LoginUserUseCaseBuilder().withEmail(
+			mockedUser.render().email,
+		).props;
+
+		const { accessToken, user } = await sut.exec(input);
+
+		expect(user).toStrictEqual(mockedUser);
+		expect(accessToken).toBe(mockedAccessToken);
+	});
 });
