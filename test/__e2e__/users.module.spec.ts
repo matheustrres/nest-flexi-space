@@ -44,7 +44,7 @@ describe(UsersModule.name, (): void => {
 		await resetDb();
 	});
 
-	describe('X POST /users', () => {
+	describe('X POST /users', (): void => {
 		it('should return an error when trying to create a user with an already in use email address', async (): Promise<void> => {
 			const httpServer = app.getHttpServer();
 			const dto = makeCreateUserDto();
@@ -63,6 +63,27 @@ describe(UsersModule.name, (): void => {
 						content: `The following email address "${dto.email}" is already in use.`,
 						endpoint: 'POST /users',
 					});
+				});
+		});
+
+		it('should return the created user', async (): Promise<void> => {
+			const dto = makeCreateUserDto({
+				name: 'John Doe',
+				email: 'john.doe@gmail.com',
+			});
+
+			return request(app.getHttpServer())
+				.post('/users')
+				.send(dto)
+				.expect(201)
+				.then((res) => {
+					expect(res.body['id']).toBeDefined();
+					expect(res.body).toMatchObject({
+						name: 'John Doe',
+						email: 'john.doe@gmail.com',
+						role: 'USER',
+					});
+					expect(res.body['created_at']).toBeDefined();
 				});
 		});
 	});
