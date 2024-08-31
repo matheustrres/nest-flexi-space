@@ -8,7 +8,7 @@
     "noUnusedLocals": true,
     "paths": {
       "@/*": ["./src/*"],
-      "#/*": ["./tests/*"]
+      "#/*": ["./test/*"]
     },
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
