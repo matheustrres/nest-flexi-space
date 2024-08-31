@@ -1,4 +1,14 @@
 services:
+  test_database:
+    container_name: flexi_pg_test
+    image: postgres:alpine
+    ports:
+      - ${PG_PORT}:${PG_PORT}
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_DB=flexi_test
+
   database:
     container_name: flexi_pg
     image: postgres:alpine
