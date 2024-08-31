@@ -130,6 +130,28 @@ describe(UsersModule.name, (): void => {
 					});
 				});
 		});
+
+		it('should authenticate a user successfully', async () => {
+			const httpServer = app.getHttpServer();
+			const dto = makeCreateUserDto({
+				password: 'easy_password',
+			});
+
+			await request(httpServer).post('/users').send(dto);
+
+			return request(httpServer)
+				.post('/users/login')
+				.send({
+					email: dto.email,
+					password: dto.password,
+				})
+				.expect(200)
+				.then((res) => {
+					expect(res.body['accessToken']).toBeDefined();
+					expect(res.body['user']).toBeDefined();
+					expect(res.body['user']['email']).toBe(dto.email);
+				});
+		});
 	});
 
 	afterAll(async (): Promise<void> => {
