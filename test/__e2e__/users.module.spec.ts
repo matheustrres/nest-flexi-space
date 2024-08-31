@@ -88,6 +88,24 @@ describe(UsersModule.name, (): void => {
 		});
 	});
 
+	describe('X POST /users/login', (): void => {
+		it('should return an error when trying to authenticate with an unregistered account', async (): Promise<void> => {
+			return request(app.getHttpServer())
+				.post('/users/login')
+				.send(makeCreateUserDto())
+				.expect(401)
+				.then((res) => {
+					expect(res.body['timestamp']).toBeDefined();
+					expect(res.body).toMatchObject({
+						status: 'ERROR',
+						code: 401,
+						content: 'Invalid credentials provided. Please, try again.',
+						endpoint: 'POST /users/login',
+					});
+				});
+		});
+	});
+
 	afterAll(async (): Promise<void> => {
 		await resetDb();
 		await prismaService.$disconnect();
