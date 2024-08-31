@@ -104,6 +104,32 @@ describe(UsersModule.name, (): void => {
 					});
 				});
 		});
+
+		it('should return an error when provided password does not match user hashed password', async (): Promise<void> => {
+			const httpServer = app.getHttpServer();
+			const dto = makeCreateUserDto({
+				password: 'easy_password',
+			});
+
+			await request(httpServer).post('/users').send(dto);
+
+			return request(httpServer)
+				.post('/users/login')
+				.send({
+					...dto,
+					password: 'different_password',
+				})
+				.expect(401)
+				.then((res) => {
+					expect(res.body['timestamp']).toBeDefined();
+					expect(res.body).toMatchObject({
+						status: 'ERROR',
+						code: 401,
+						content: 'Invalid credentials provided. Please, try again.',
+						endpoint: 'POST /users/login',
+					});
+				});
+		});
 	});
 
 	afterAll(async (): Promise<void> => {
