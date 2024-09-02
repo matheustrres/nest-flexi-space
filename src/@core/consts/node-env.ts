@@ -1,10 +1,8 @@
-import { type ObjectValues } from '../types';
+const environments = [
+	'DEVELOPMENT',
+	'PRODUCTION',
+	'STAGING',
+	'TESTING',
+] as const;
 
-export const NODE_ENV = {
-	DEVELOPMENT: 'DEVELOPMENT',
-	PRODUCTION: 'PRODUCTION',
-	STAGING: 'STAGING',
-	TESTING: 'TESTING',
-} as const;
-
-export type NODE_ENV = ObjectValues<typeof NODE_ENV>;
+export type NODE_ENV = (typeof environments)[number];

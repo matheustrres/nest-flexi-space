@@ -1,8 +1,3 @@
-import { type ObjectValues } from '../types';
+const roles = ['ADMIN', 'USER'] as const;
 
-export const ROLE = {
-	USER: 'USER',
-	ADMIN: 'ADMIN',
-} as const;
-
-export type ROLE = ObjectValues<typeof ROLE>;
+export type ROLE = (typeof roles)[number];
