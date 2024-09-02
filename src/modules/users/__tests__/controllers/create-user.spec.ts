@@ -66,8 +66,4 @@ describe(CreateUserController.name, (): void => {
 		expect(useCase.exec).toHaveBeenCalledWith(dto);
 		expect(result).toEqual(UserViewModel.toJson(user));
 	});
-
-	afterAll((): void => {
-		jest.clearAllMocks();
-	});
 });

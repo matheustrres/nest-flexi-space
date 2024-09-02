@@ -9,7 +9,9 @@ export default {
 		'^.+\\.(t|j)sx?$': '@swc/jest',
 	},
 	collectCoverageFrom: ['**/*.(t|j)s'],
-	coverageDirectory: '../coverage',
+	coverageDirectory: './coverage',
+	// Equivalent to calling jest.clearAllMocks() before each test
+	clearMocks: true,
 	testEnvironment: 'node',
 	moduleNameMapper: {
 		'@/tests/(.+)': '<rootDir>/tests/$1',

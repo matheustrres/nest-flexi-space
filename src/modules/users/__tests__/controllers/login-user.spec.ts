@@ -68,8 +68,4 @@ describe(LoginUserController.name, (): void => {
 			user: UserViewModel.toJson(user),
 		});
 	});
-
-	afterAll((): void => {
-		jest.clearAllMocks();
-	});
 });

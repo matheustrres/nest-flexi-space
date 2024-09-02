@@ -86,8 +86,4 @@ describe('CreateUserUseCase', () => {
 		expect(userEmail).toBe(email);
 		expect(role).toBe<ROLE>('ADMIN');
 	});
-
-	afterEach((): void => {
-		jest.clearAllMocks();
-	});
 });
