@@ -20,7 +20,7 @@ export class RoomMapper {
 		const { slug, ...rest } = room.render();
 
 		return {
-      ...rest,
+			...rest,
 			id: room.id.toString(),
 			slug: slug.props.value,
 			createdAt: room.createdAt,
