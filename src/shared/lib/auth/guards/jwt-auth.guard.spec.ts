@@ -62,6 +62,15 @@ describe(JwtAuthGuard.name, (): void => {
 		expect(sut).toBeDefined();
 	});
 
+	it('should allow access to public routes', async (): Promise<void> => {
+		jest.spyOn(reflector, 'getAllAndOverride').mockReturnValueOnce(true);
+
+		const ctx = createMockExecutionCtx();
+		const result = await sut.canActivate(ctx);
+
+		expect(result).toBe(true);
+	});
+
 	it('should throw an UnauthorizedException if no authentication token is provided', async (): Promise<void> => {
 		jest.spyOn(reflector, 'getAllAndOverride').mockReturnValueOnce(false);
 
