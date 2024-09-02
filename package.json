@@ -17,7 +17,9 @@
 		"test:watch": "pnpm test -- --watch",
 		"test:cov": "pnpm test -- --coverage",
 		"test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+		"pretest:e2e": "docker compose up -d test_database",
 		"test:e2e": "pnpm test -- --config ./test/jest.e2e-config.ts",
+		"posttest:e2e": "docker compose -f docker-compose.yml stop test_database",
 		"prepare": "husky install"
 	},
 	"dependencies": {
