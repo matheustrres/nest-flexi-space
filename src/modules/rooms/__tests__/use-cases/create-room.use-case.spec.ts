@@ -49,6 +49,26 @@ describe(CreateRoomUseCase.name, (): void => {
 		await expect(
 			sut.exec(new CreateRoomUseCaseBuilder().withName(name).props),
 		).rejects.toThrow(RoomAlreadyExistsException.bySlug(slugValue));
-		expect(roomsRepository.findBySlug).toHaveBeenNthCalledWith(1, slugValue);
+		expect(roomsRepository.findBySlug).toHaveBeenCalledWith(slugValue);
+	});
+
+	it('should create a new room', async (): Promise<void> => {
+		jest.spyOn(roomsRepository, 'findBySlug').mockResolvedValueOnce(null);
+
+		const { room } = await sut.exec(
+			new CreateRoomUseCaseBuilder()
+				.withName('Private Room')
+				.withCapacity(1)
+				.withIsReserved(true).props,
+		);
+
+		const { name, slug, capacity, isReserved } = room.render();
+
+		expect(room).toBeDefined();
+		expect(name).toBe('Private Room');
+		expect(slug.props.value).toBe('private-room');
+		expect(capacity).toBe(1);
+		expect(isReserved).toBe(true);
+		expect(roomsRepository.findBySlug).toHaveBeenCalledWith(slug.props.value);
 	});
 });
