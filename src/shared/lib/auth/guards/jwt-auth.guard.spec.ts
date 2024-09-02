@@ -78,4 +78,23 @@ describe(JwtAuthGuard.name, (): void => {
 		);
 		expect(ctx.switchToHttp().getRequest<Request>().headers).toStrictEqual({});
 	});
+
+	it('should throw an UnauthorizedException if an invalid authentication token is provided', async (): Promise<void> => {
+		jest.spyOn(reflector, 'getAllAndOverride').mockReturnValueOnce(false);
+		jest
+			.spyOn(tokenService, 'verifyToken')
+			.mockRejectedValueOnce(new Error('InvalidAuthenticationTokenSignature'));
+
+		const ctx = createMockExecutionCtx({
+			request: {
+				headers: {
+					authorization: 'Bearer invalidToken',
+				},
+			},
+		});
+
+		await expect(sut.canActivate(ctx)).rejects.toThrow(
+			new UnauthorizedException('Invalid authentication token'),
+		);
+	});
 });
