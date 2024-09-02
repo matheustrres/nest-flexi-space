@@ -10,7 +10,7 @@ export type RoomProps = {
 	location: string;
 	capacity: number;
 	isReserved: boolean;
-	availability: (Date | string)[];
+	availability: Date[];
 };
 
 export type RoomConstructorProps = CreateEntityProps<RoomProps>;
