@@ -1,4 +1,4 @@
-const environments = [
+export const environments = [
 	'DEVELOPMENT',
 	'PRODUCTION',
 	'STAGING',
