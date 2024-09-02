@@ -2,7 +2,8 @@ import { Injectable } from '@nestjs/common';
 
 import { RoomAlreadyExistsException } from './exceptions/room-already-exists.exception';
 
-import { type RoomsRepository } from '../repositories/rooms.repository';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { RoomsRepository } from '../repositories/rooms.repository';
 
 import { type UseCase } from '@/@core/use-case';
 import { Slug } from '@/@core/value-objects/slug';
