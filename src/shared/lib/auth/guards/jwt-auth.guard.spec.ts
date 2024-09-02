@@ -1,9 +1,12 @@
 import { UnauthorizedException, type ExecutionContext } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { Test } from '@nestjs/testing';
+import { type Request } from 'express';
 import { type IncomingHttpHeaders } from 'http';
 
 import { JwtAuthGuard } from './jwt-auth.guard';
+
+import { type JwtPayload } from '@/@core/types';
 
 import { TokenService } from '@/modules/users/services/token.service';
 
@@ -12,6 +15,10 @@ import { getJwtErrorMessage } from '@/shared/lib/auth/errors/jwt';
 type MockExecutionCtxOptions = {
 	request?: {
 		headers?: IncomingHttpHeaders;
+		user?: {
+			sub: string;
+			role: string;
+		};
 	};
 };
 
@@ -105,5 +112,31 @@ describe(JwtAuthGuard.name, (): void => {
 		await expect(sut.canActivate(ctx)).rejects.toThrow(
 			new UnauthorizedException('Invalid authentication token'),
 		);
+	});
+
+	it('should validate authentication token and attach payload to request user', async (): Promise<void> => {
+		const mockedPayload: JwtPayload = {
+			sub: 'random_uuid()',
+			role: 'ADMIN',
+		};
+
+		jest.spyOn(reflector, 'getAllAndOverride').mockReturnValueOnce(false);
+		jest
+			.spyOn(tokenService, 'verifyToken')
+			.mockResolvedValueOnce(mockedPayload);
+
+		const ctx = createMockExecutionCtx({
+			request: {
+				headers: {
+					authorization: 'Bearer mockToken',
+				},
+			},
+		});
+
+		const result = await sut.canActivate(ctx);
+		const request = ctx.switchToHttp().getRequest<Request>();
+
+		expect(result).toBe(true);
+		expect(request.user).toStrictEqual(mockedPayload);
 	});
 });
