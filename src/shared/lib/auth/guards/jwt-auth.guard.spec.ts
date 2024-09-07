@@ -8,9 +8,8 @@ import { JwtAuthGuard } from './jwt-auth.guard';
 
 import { type JwtPayload } from '@/@core/types';
 
-import { TokenService } from '@/modules/users/services/token.service';
-
 import { getJwtErrorMessage } from '@/shared/lib/auth/errors/jwt';
+import { TokenService } from '@/shared/lib/services/token.service';
 
 type MockExecutionCtxOptions = {
 	request?: {

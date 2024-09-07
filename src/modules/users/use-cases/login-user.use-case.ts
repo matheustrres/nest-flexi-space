@@ -6,9 +6,10 @@ import { type UseCase } from '@/@core/use-case';
 
 /* eslint-disable @typescript-eslint/consistent-type-imports */
 import { UsersRepository } from '@/modules/users/repositories/users.repository';
-import { HashingService } from '@/modules/users/services/hashing.service';
-import { TokenService } from '@/modules/users/services/token.service';
 import { type UserEntity } from '@/modules/users/user.entity';
+
+import { HashingService } from '@/shared/lib/services/hashing.service';
+import { TokenService } from '@/shared/lib/services/token.service';
 
 export type LoginUserUseCaseInput = {
 	email: string;

@@ -5,9 +5,10 @@ import { type UseCase } from '@/@core/use-case';
 
 /* eslint-disable @typescript-eslint/consistent-type-imports */
 import { UsersRepository } from '@/modules/users/repositories/users.repository';
-import { HashingService } from '@/modules/users/services/hashing.service';
 import { UserAlreadyExistsException } from '@/modules/users/use-cases/exceptions/user-already-exists.exception';
 import { UserEntity } from '@/modules/users/user.entity';
+
+import { HashingService } from '@/shared/lib/services/hashing.service';
 
 export type CreateUserUseCaseInput = {
 	name: string;

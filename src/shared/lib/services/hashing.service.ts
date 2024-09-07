@@ -1,5 +1,6 @@
 import { randomBytes } from 'node:crypto';
 
+import { Injectable } from '@nestjs/common';
 import { hash, compare } from '@node-rs/bcrypt';
 
 type CompareStringsOptions = {
@@ -7,6 +8,7 @@ type CompareStringsOptions = {
 	plainStr: string;
 };
 
+@Injectable()
 export class HashingService {
 	async hashString(str: string) {
 		const salt = randomBytes(16);

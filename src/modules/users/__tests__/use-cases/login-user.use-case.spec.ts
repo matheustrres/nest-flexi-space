@@ -4,10 +4,11 @@ import { LoginUserUseCaseBuilder } from '../_data_/builders/use-cases/login-user
 import { UserBuilder } from '../_data_/builders/user.builder';
 
 import { UsersRepository } from '@/modules/users/repositories/users.repository';
-import { HashingService } from '@/modules/users/services/hashing.service';
-import { TokenService } from '@/modules/users/services/token.service';
 import { InvalidCredentialsException } from '@/modules/users/use-cases/exceptions/invalid-credentials.exception';
 import { LoginUserUseCase } from '@/modules/users/use-cases/login-user.use-case';
+
+import { HashingService } from '@/shared/lib/services/hashing.service';
+import { TokenService } from '@/shared/lib/services/token.service';
 
 describe(LoginUserUseCase.name, (): void => {
 	let usersRepository: UsersRepository;

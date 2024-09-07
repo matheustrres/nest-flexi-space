@@ -7,9 +7,10 @@ import { UserBuilder } from '../_data_/builders/user.builder';
 import { type ROLE } from '@/@core/consts/role';
 
 import { UsersRepository } from '@/modules/users/repositories/users.repository';
-import { HashingService } from '@/modules/users/services/hashing.service';
 import { CreateUserUseCase } from '@/modules/users/use-cases/create-user.use-case';
 import { UserAlreadyExistsException } from '@/modules/users/use-cases/exceptions/user-already-exists.exception';
+
+import { HashingService } from '@/shared/lib/services/hashing.service';
 
 describe('CreateUserUseCase', () => {
 	let usersRepository: UsersRepository;

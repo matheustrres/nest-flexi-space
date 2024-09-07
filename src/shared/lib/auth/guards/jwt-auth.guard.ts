@@ -13,10 +13,9 @@ import { getJwtErrorMessage, type JwtError } from '../errors/jwt';
 
 import { type JwtPayload } from '@/@core/types';
 
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { TokenService } from '@/modules/users/services/token.service';
-
 import { IS_PUBLIC_ROUTE } from '@/shared/lib/auth/decorators/public-route.decorator';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { TokenService } from '@/shared/lib/services/token.service';
 
 @Injectable()
 export class JwtAuthGuard implements CanActivate {
