@@ -11,6 +11,8 @@ import {
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { LoginUserUseCase } from '@/modules/users/use-cases/login-user.use-case';
 
+import { IsPublicRoute } from '@/shared/lib/auth/decorators/public-route.decorator';
+
 type LoginUserControllerResponse = {
 	accessToken: string;
 	user: UserToJson;
@@ -23,6 +25,7 @@ export class LoginUserController
 	constructor(private readonly useCase: LoginUserUseCase) {}
 
 	@Post()
+	@IsPublicRoute()
 	@HttpCode(HttpStatus.OK)
 	async handle(
 		@Body(LoginUserDtoBodyPipe) body: LoginUserDto,

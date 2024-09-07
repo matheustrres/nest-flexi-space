@@ -14,11 +14,14 @@ import {
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { CreateUserUseCase } from '@/modules/users/use-cases/create-user.use-case';
 
+import { IsPublicRoute } from '@/shared/lib/auth/decorators/public-route.decorator';
+
 @Controller('users')
 export class CreateUserController implements IController<UserToJson> {
 	constructor(private readonly useCase: CreateUserUseCase) {}
 
 	@Post()
+	@IsPublicRoute()
 	@HttpCode(HttpStatus.CREATED)
 	async handle(
 		@Body(CreateUserDtoBodyPipe) body: CreateUserDto,
